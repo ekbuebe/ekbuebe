@@ -1,0 +1,125 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #e3f2fd;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* Entfernt Standard-Highlight auf iOS */
+    touch-action: manipulation; /* Verhindert Doppel-Tap-Zoom auf Buttons */
+}
+
+.category, .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: white;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.category {
+    font-weight: bold;
+    background: #ddd;
+    cursor: grab;
+}
+
+.item {
+    cursor: grab;
+}
+
+.icon, .drag-handle, .color-picker, .delete-button {
+    cursor: pointer;
+    margin: 0 10px;
+    user-select: none; /* Verhindert Textauswahl beim Tippen */
+}
+
+.drag-handle {
+    cursor: grab;
+}
+
+.button-container {
+    margin-left: 10px;
+}
+
+.color-box, .rename-box {
+    position: fixed; /* Fixierte Position relativ zum Viewport */
+    z-index: 2000; /* Hoch, um über allen Elementen zu schweben */
+    background: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    min-width: 150px; /* Mindestbreite für bessere Sichtbarkeit */
+    display: none; /* Standardmäßig ausgeblendet */
+}
+
+.color-options {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.color-option {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #aaa;
+}
+
+.rename-box input {
+    width: 120px; /* Etwas größer für bessere Touch-Interaktion */
+    padding: 5px;
+}
+
+.amount-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto;
+}
+
+/* Spezielle Styles für Touch-Geräte */
+@media (hover: none) {
+    .category, .item {
+        padding: 20px; /* Etwas mehr Platz für Touch */
+    }
+    button {
+        padding: 12px 18px; /* Größere Buttons für leichteres Tippen */
+        font-size: 18px;
+    }
+    .rename-box input {
+        width: 140px; /* Größere Eingabefelder für Touch-Geräte */
+    }
+}
+
+/* Verbesserte visuelle Rückmeldung für Drag-and-Drop auf Touch-Geräten */
+.category:focus, .item:focus {
+    border: 2px dashed #000; /* Simuliert Hover-Effekt für Touch */
+    outline: none; /* Entfernt Standard-Fokus-Rahmen */
+}
+
+/* Aktives Element beim Drag-and-Drop */
+.category:active, .item:active {
+    opacity: 0.7; /* Leicht transparent beim Ziehen */
+}
+
+/* Zusätzliche Anpassung für das Logo */
+img[alt="Logo der Büro-Bestellung App"] {
+    height: 30px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+/* Subtile Anzeige des gespeicherten Shop-Namens */
+#savedShopName {
+    color: #666; /* Subtile graue Farbe */
+    font-style: italic; /* Kursiv für Eleganz */
+    font-size: 14px; /* Dezent, aber lesbar */
+    margin-left: 10px; /* Abstand wie zuvor */
+}
+
+#savedShopName::before {
+    content: "🏪 "; /* Optional: kleines Icon vor dem Text */
+    font-size: 12px;
+}

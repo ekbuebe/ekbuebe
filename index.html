@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- iOS-spezifische Meta-Tags für Vollbildmodus und Statusleisten-Styling -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <!-- Apple Touch Icons für verschiedene iOS-Geräte -->
+    <link rel="apple-touch-icon" sizes="120x120" href="icons/apple-icon-120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180.png">
+    <!-- Standard-Icon für iOS -->
+    <link rel="apple-touch-icon" href="icons/apple-icon-180.png">
+    
+    <!-- Icons für andere Plattformen (z. B. Android) -->
+    <link rel="icon" sizes="192x192" href="icons/icon-192.png">
+    <link rel="icon" sizes="512x512" href="icons/icon-512.png">
+    
+    <!-- Link zur Manifest-Datei -->
+    <link rel="manifest" href="manifest.json">
+    
+    <title>Büro-Bestellung</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div style="display: flex; align-items: center;">
+        <img src="icons/logo.png" alt="Logo der Büro-Bestellung App" style="height: 30px; margin-right: 10px;">
+        <h2>Büro-Bestellung</h2>
+    </div>
+    <div>
+        <label for="shopName">Shop-Name:</label>
+        <input type="text" id="shopName" placeholder="Shop-Name eingeben">
+        <button onclick="saveShopName()">Speichern</button>
+        <span id="savedShopName" class="shop-name-display"></span> <!-- Anzeige des gespeicherten Shop-Namens -->
+    </div>
+    <button onclick="addCategory()">Neue Kategorie</button>
+    <div id="catalog"></div>
+    <button onclick="generateEmail()">Email erstellen</button> <!-- Button ruft generateEmail auf -->
+    <script src="script.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("service-worker.js")
+                .then(() => console.log("Service Worker registriert"))
+                .catch(err => console.error("Fehler bei der Registrierung:", err));
+        }
+    </script>
+</body>
+</html>
